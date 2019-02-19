@@ -230,7 +230,7 @@ namespace modsecurity {
 namespace actions {
 class Action;
 }
-class Rule;
+class RuleWithOperator;
 
 #ifdef __cplusplus
 extern "C" {
