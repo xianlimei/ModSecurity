@@ -166,6 +166,8 @@ class RuleMessage {
         return 0;
     }
 
+    RuleWithActions::Tags getTags();
+
     std::string getClientIpAddress() {
         if (m_transaction) {
             return *m_transaction->m_clientIpAddress.get();
@@ -210,7 +212,6 @@ class RuleMessage {
     // Rule
     bool m_isDisruptive;
     int m_severity;
-    std::list<std::string> m_tags;
 
     // Transaction
     std::string m_data;
