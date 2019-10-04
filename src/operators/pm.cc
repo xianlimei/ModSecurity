@@ -98,16 +98,15 @@ bool Pm::evaluate(Transaction *transaction, Rule *rule,
 #endif
 
     if (rc >= 0 && transaction) {
-        std::string match_(match);
+        std::string match_(match ? match : "");
         logOffset(ruleMessage, rc - match_.size() + 1, match_.size());
         transaction->m_matched.push_back(match_);
-    }
 
-    if (rule && rule->m_containsCaptureAction && transaction && rc) {
-        transaction->m_collections.m_tx_collection->storeOrUpdateFirst("0",
-            std::string(match));
-        ms_dbg_a(transaction, 7, "Added pm match TX.0: " + \
-            std::string(match));
+        if (rule && rule->m_containsCaptureAction) {
+            transaction->m_collections.m_tx_collection->storeOrUpdateFirst(
+                "0", match_);
+            ms_dbg_a(transaction, 7, "Added pm match TX.0: " + match_);
+        }
     }
 
     return rc >= 0;
