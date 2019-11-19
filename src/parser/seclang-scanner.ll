@@ -1145,6 +1145,7 @@ EQUALS_MINUS                            (?i:=\-)
 
 <EXPECTING_PARAMETER_ENDS_WITH_QUOTE>{
 ["]                                        { BEGIN(TRANSACTION_FROM_OPERATOR_PARAMETERS_TO_ACTIONS); }
+{FREE_TEXT_DOUBLE_QUOTE_MACRO_EXPANSION}["]   { yyless(1); return p::make_FREE_TEXT_QUOTE_MACRO_EXPANSION(yytext, *driver.loc.back()); }
 {FREE_TEXT_DOUBLE_QUOTE_MACRO_EXPANSION}   { return p::make_FREE_TEXT_QUOTE_MACRO_EXPANSION(yytext, *driver.loc.back()); }
 }
 
