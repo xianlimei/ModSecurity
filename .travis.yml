@@ -46,13 +46,9 @@ script:
   - ./build.sh
   - ./configure $OPTS
   - make parser
-  - make
-#
-# Temporarily disabled.
-# - make -j$(getconf _NPROCESSORS_ONLN)
-# Leading build to crash with parser enabled.
-# Not sure why.
-#
+  - make -j$(getconf _NPROCESSORS_ONLN)
+    # -jX could lead to build crash with parser enabled.
+    # not sure why.
   - make check
   - cat test-suite.log
   - make check-static
