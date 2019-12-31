@@ -54,6 +54,7 @@ script:
 # Not sure why.
 #
   - make check
+  - cat test-suite.log
   - make check-static
 
 
