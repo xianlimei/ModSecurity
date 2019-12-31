@@ -568,7 +568,7 @@ int main(int argc, char **argv) {
         }
 
         if (!r->passed && !r->skipped && !r->disabled) {
-            if (!test.m_automake_output) {
+            /*if (!test.m_automake_output) {*/
                 std::cout << KRED << "Test failed." << RESET << KWHT \
                     << " From: " \
                     << RESET << r->test->filename << "." << std::endl;
@@ -577,7 +577,7 @@ int main(int argc, char **argv) {
                     << "." << std::endl;
                 std::cout << KWHT << "Reason: " << RESET << std::endl;
                 std::cout << r->reason.str() << std::endl;
-            }
+            /*}*/
             failed++;
         }
         delete r;
